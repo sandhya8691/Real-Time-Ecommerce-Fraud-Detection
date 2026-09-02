@@ -2,20 +2,21 @@
 
 A Machine Learning based fraud detection system for identifying potentially fraudulent e-commerce transactions in real time.
 
-## 🚀 Project Overview
+## 📌 Project Overview
 
 This project uses Machine Learning to analyze e-commerce transaction data and predict whether a transaction is fraudulent or non-fraudulent.
 
-The trained model is deployed through a FastAPI REST API, allowing users or applications to send transaction details and receive a fraud prediction, probability, and risk level.
+The trained model is deployed using FastAPI and provides real-time fraud predictions through a REST API.
 
 ## 🎯 Objectives
 
 - Detect fraudulent e-commerce transactions
-- Handle imbalanced fraud data using class balancing
-- Perform feature engineering
-- Compare multiple Machine Learning models
-- Deploy the trained model using FastAPI
-- Provide real-time fraud prediction through REST API
+- Perform data preprocessing and feature engineering
+- Handle imbalanced fraud data
+- Compare Machine Learning models
+- Select the best-performing model
+- Deploy the model using FastAPI
+- Provide real-time fraud prediction
 
 ## 🛠️ Technologies Used
 
@@ -23,8 +24,8 @@ The trained model is deployed through a FastAPI REST API, allowing users or appl
 - Pandas
 - NumPy
 - Scikit-learn
-- Random Forest
 - Logistic Regression
+- Random Forest
 - XGBoost
 - Matplotlib
 - Seaborn
@@ -39,11 +40,11 @@ The trained model is deployed through a FastAPI REST API, allowing users or appl
 
 The project uses a synthetic e-commerce transaction dataset containing 50,000 transactions.
 
-The dataset includes transaction amount, payment method, product category, customer age, account age, device information, location information, transaction history, and fraud indicators.
+The dataset contains transaction, customer, payment, device, location and fraud-related information.
 
 ## ⚙️ Feature Engineering
 
-The following additional features were created:
+The following features were created:
 
 - Transaction Hour
 - Log Transaction Amount
@@ -59,7 +60,7 @@ Two classification models were evaluated:
 1. Logistic Regression
 2. Random Forest Classifier
 
-The Random Forest model was selected as the final model based on ROC-AUC performance.
+Random Forest was selected as the final model based on ROC-AUC performance.
 
 ## 📈 Final Model Performance
 
@@ -84,12 +85,37 @@ The API provides:
 - Fraud percentage
 - Risk level
 - Input validation
-- Health check endpoint
+- Health check
 - Interactive Swagger documentation
 
-### API Endpoints
+## 🔗 API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | API status |
+| GET | `/health` | Health check |
+| POST | `/predict` | Fraud prediction |
+
+## 📁 Project Structure
 
 ```text
-GET  /
-GET  /health
-POST /predict
+Real-Time-Ecommerce-Fraud-Detection/
+│
+├── api/
+│   └── main.py
+│
+├── data/
+│   ├── transactions.csv
+│   └── transactions_featured.csv
+│
+├── models/
+│   ├── fraud_detection_model.pkl
+│   └── final_model_performance.csv
+│
+├── notebooks/
+│   └── 01_data_exploration.ipynb
+│
+├── create_dataset.py
+├── requirements.txt
+├── .gitignore
+└── README.md
